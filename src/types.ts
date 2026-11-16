@@ -133,6 +133,8 @@ export interface AppSettings {
   vocProfileId: string
   vocApiKey: string
   seedreamEditorProfileId?: string
+  /** 桌面版：显式允许请求本机/内网（私有地址）API，默认关闭 */
+  allowPrivateNetwork?: boolean
 }
 
 // ===== 任务参数 =====
@@ -149,7 +151,8 @@ export interface TaskParams {
 export const DEFAULT_OUTPUT_COMPRESSION = 70
 
 export const DEFAULT_PARAMS: TaskParams = {
-  size: 'auto',
+  // 全局默认竖版 4:3（3:4）；如需恢复模型自适应，改回 'auto'
+  size: '1152x1536',
   quality: 'auto',
   output_format: 'jpeg',
   output_compression: DEFAULT_OUTPUT_COMPRESSION,
